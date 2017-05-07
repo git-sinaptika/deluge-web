@@ -62,6 +62,8 @@ RUN \
 EXPOSE \
  ${D_W_PORT}
 
+USER \
+ ${D_USER}
 ENTRYPOINT \
  ["/sbin/tini", "--"]
 CMD \
