@@ -16,8 +16,7 @@ ENV \
 
 RUN \
  mkdir -p \
-  ${D_DIR} \
-  ${D_DIR}/config && \
+  ${D_DIR} && \
  addgroup -g \
   ${D_GID} -S ${D_GROUP} && \
  adduser \
