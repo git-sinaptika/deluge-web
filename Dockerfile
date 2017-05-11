@@ -16,7 +16,7 @@ ENV \
 
 RUN \
  mkdir -p \
-  ${D_DIR} && \
+  ${D_DIR}/config && \
  addgroup -g \
   ${D_GID} -S ${D_GROUP} && \
  adduser \
@@ -55,7 +55,7 @@ RUN \
   /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/deluge/ui/i18n/* \
   /usr/bin/deluge /usr/bin/deluged /usr/bin/deluge-gtk && \
  rm -rf \
-  /root/*. && \
+  /root/* && \
  chown -R ${D_USER}:${D_GROUP} \
   ${D_DIR}
 
@@ -67,7 +67,7 @@ USER \
 ENTRYPOINT \
  ["/sbin/tini", "--"]
 CMD \
- ["/usr/bin/deluge-web", "-c", "/opt/deluge", "-l", "/opt/deluge/deluge-web.log", "-L", "warn"]
+ ["/usr/bin/deluge-web", "-c", "/opt/deluge/config", "-l", "/opt/deluge/config/deluge-web.log", "-L", "warn"]
 
 LABEL \
  net.sinaptika.maintainer="info@sinaptika.net" \
@@ -76,8 +76,8 @@ LABEL \
  net.sinaptika.from="alpine:3.5" \
  c_software_name="Deluge-web interface" \
  c_software_url="http://deluge-torrent.org/" \
- image.version="0.2" \
- date.version="6.5.2017" \
+ image.version="0.3" \
+ date.version="11.5.2017" \
  web_interface=true \
  web_interface_port=${D_W_PORT} \
  exposed_ports=${D_W_PORT} \
