@@ -48,11 +48,11 @@ RUN \
  apk del \
   boost geoip py2-pip openssl libtorrent-rasterbar intltool && \
  rm -rf \
-  /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/share/* \
-  /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/deluge/data/pixmaps/* \
-  /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/deluge/ui/gtkui/* \
-  /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/deluge/ui/console/* \
-  /usr/lib/python2.7/site-packages/deluge-1.3.14-py2.7.egg/deluge/ui/i18n/* \
+  /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/share/* \
+  /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/data/pixmaps/* \
+  /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/ui/gtkui/* \
+  /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/ui/console/* \
+  /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/ui/i18n/* \
   /usr/bin/deluge /usr/bin/deluged /usr/bin/deluge-gtk && \
  rm -rf \
   /root/* && \
