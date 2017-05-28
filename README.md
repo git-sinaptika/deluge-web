@@ -1,6 +1,6 @@
 # sinaptika/deluge-web
 Docker image for deluge web interface   
-From alpine:3.5  
+From alpine:3.6  
 Deluge: 1.3.15  
 This image contains only Deluge web interface.  
 Deluge web interface port: 8112  
@@ -10,7 +10,7 @@ Deluge web interface port: 8112
 
 #### Simple instructions:  
 1. Pull the image from docker-hub:  
-`docker pull sinaptika/deluge-web`  
+`docker pull sinaptika/deluge`  
 
 2. Create a directory called deluge inside your home directory on the host:  
 `mkdir ~/deluge`

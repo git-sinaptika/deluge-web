@@ -1,7 +1,7 @@
 #Maintainer info@sinaptika.net
 #deluge http://deluge-torrent.org/
 #deluge-web image
-FROM alpine:3.5
+FROM alpine:3.6
 
 ENV \
  DELUGE_VERSION=1.3.15 \
@@ -37,7 +37,11 @@ RUN \
   --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   libtorrent-rasterbar && \
  pip install --no-cache-dir \
-  service_identity && \
+  automat \
+  service_identity \
+  incremental \
+  constantly \
+  packaging && \
  cd /root && \
  wget -qO- \
   http://download.deluge-torrent.org/source/deluge-${DELUGE_VERSION}.tar.gz | tar xz && \
@@ -73,11 +77,11 @@ LABEL \
  net.sinaptika.maintainer="info@sinaptika.net" \
  net.sinaptika.name="deluge-web" \
  net.sinaptika.branch="master" \
- net.sinaptika.from="alpine:3.5" \
+ net.sinaptika.from="alpine:3.6" \
  c_software_name="Deluge-web interface" \
  c_software_url="http://deluge-torrent.org/" \
- image.version="0.4" \
- date.version="12.5.2017" \
+ image.version="0.5" \
+ date.version="28.5.2017" \
  web_interface=true \
  web_interface_port=${D_W_PORT} \
  exposed_ports=${D_W_PORT} \
