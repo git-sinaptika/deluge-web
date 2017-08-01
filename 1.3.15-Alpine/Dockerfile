@@ -10,12 +10,12 @@ ENV \
  D_USER="deluge" \
  D_GROUP="deluge" \
  D_W_PORT="8112" \
- D_W_LOG_LEVEL="warn"
+ D_W_LOG_LEVEL="warn" \
  D_UID="1000" \
  D_GID="1000" \
 #Enviroment variables for running the container.
 #Pass at docker create or docker run (-e VARIABLE=value).
- TZ="Europe/London" \
+ TZ="Europe/London"
 
 RUN \
 #Create directory structure and add user:group.
