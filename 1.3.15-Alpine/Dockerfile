@@ -45,7 +45,7 @@ RUN \
  apk add --no-cache --virtual .runtime \
   zlib py-setuptools py2-openssl py2-chardet py-twisted py-mako && \
  pip install --no-cache-dir \
-  automat service_identity incremental constantly packaging && \
+  automat pyxdg service_identity incremental constantly packaging && \
  cd /root && \
  wget -qO- \
   http://download.deluge-torrent.org/source/deluge-${DELUGE_VERSION}.tar.gz | tar xz && \
@@ -76,7 +76,7 @@ USER \
 ENTRYPOINT \
  ["/sbin/tini", "--"]
 CMD \
- ["/usr/bin/deluge-web", "-c", "/opt/deluge/config", "-l", "/opt/deluge/config/deluge-web.log", "-L", "warn"]
+ ["/usr/bin/deluge-web", "--ssl", "-c", "/opt/deluge/config", "-l", "/opt/deluge/config/deluge-web.log", "-L", "warn"]
 
 LABEL \
  net.sinaptika.maintainer="info@sinaptika.net" \
@@ -85,8 +85,8 @@ LABEL \
  net.sinaptika.from="alpine:3.6" \
  c_software_name="Deluge-web interface" \
  c_software_url="http://deluge-torrent.org/" \
- image.version="0.3" \
- date.version="3.8.2017" \
+ image.version="0.4" \
+ date.version="27.8.2017" \
  web_interface=true \
  web_interface_port=${D_W_PORT} \
  exposed_ports=${D_W_PORT} \
