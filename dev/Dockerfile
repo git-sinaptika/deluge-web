@@ -32,9 +32,9 @@ RUN \
   -u ${D_UID} ${D_USER}
 
 RUN \
-#deluge-web and system dependancies
+#deluge-web and system dependencies
  apk add --no-cache --virtual .system \
-  tzdata tini && \
+  tzdata tini su-exec && \
  apk add --no-cache --virtual .build \
   boost geoip py2-pip openssl intltool && \
 #Pulling old libtorrent from repo, to satsify dependancies during build
@@ -53,6 +53,15 @@ RUN \
   deluge-${DELUGE_VERSION}/ && \
  python setup.py -q build && \
  python setup.py -q install && \
+#Need to move this to entrypoint,
+#so certificate gets created on run, not on build
+# /usr/bin/deluge-web \
+#  --ssl --fork  \
+#  --config=${D_DIR}/config \
+#  --logfile=/opt/deluge/config/first_init.log \
+#  --loglevel=debug && \
+# sleep 5 && \
+# pkill -TERM python && \
 #Cleanup.
  apk del \
   .libtorrent .build && \
@@ -63,6 +72,7 @@ RUN \
   /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/ui/console/* \
   /usr/lib/python2.7/site-packages/deluge-${DELUGE_VERSION}-py2.7.egg/deluge/ui/i18n/* \
   /usr/bin/deluge /usr/bin/deluged /usr/bin/deluge-gtk && \
+ cd && \
  rm -rf \
   /root/* && \
  chown -R ${D_USER}:${D_GROUP} \
