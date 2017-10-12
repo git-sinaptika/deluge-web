@@ -12,7 +12,7 @@ ENV \
     D_USER="deluge" \
     D_GROUP="deluge" \
     D_W_PORT="8112" \
-    D_W_LOG_LEVEL="error" \
+    D_W_LOG_LEVEL="info" \
     D_UID="1000" \
     D_GID="1000" \
     TZ="Europe/London"
@@ -36,7 +36,7 @@ RUN \
 #Clean-up and first run (to generate ssl cert)
 RUN \
     apk add --no-cache --virtual .system \
-        tzdata tini su-exec && \
+        tzdata tini && \
     apk add --no-cache --virtual .build \
         boost geoip py2-pip openssl intltool && \
     apk add --no-cache --virtual .libtorrent \
@@ -56,6 +56,8 @@ RUN \
     python setup.py -q install && \
     /usr/bin/deluge-web \
         -f --ssl -c ${D_DIR}/config -l ${D_DIR}/config/deluge-web-init.log -L debug && \
+    sleep 10 && \
+    pkill -15 python && \
     apk del \
         .libtorrent .build && \
     rm -rf \
@@ -79,7 +81,7 @@ USER \
 ENTRYPOINT \
     ["/sbin/tini", "--"]
 CMD \
-    ["/usr/bin/deluge-web", "--ssl", "-c", "/opt/deluge/config", "-l", "/opt/deluge/config/deluge-web.log", "-L", "warn"]
+    ["/usr/bin/deluge-web", "-c", "/opt/deluge/config", "-l", "/opt/deluge/config/deluge-web.log", "-L", "info"]
 
 LABEL \
     net.sinaptika.maintainer="info@sinaptika.net" \
@@ -88,8 +90,8 @@ LABEL \
     net.sinaptika.from="alpine:3.6" \
     c_software_name="Deluge-web interface" \
     c_software_url="http://deluge-torrent.org/" \
-    image.version="0.4" \
-    date.version="27.8.2017" \
+    image.version="0.5" \
+    date.version="12.10.2017" \
     web_interface=true \
     web_interface_port=${D_W_PORT} \
     exposed_ports=${D_W_PORT} \

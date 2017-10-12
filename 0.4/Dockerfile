@@ -33,10 +33,9 @@ RUN \
 
 #deluge-web and system dependancies
 #Pulling libtorrent from repo, to satsify build dependancy
-#Clean-up and first run (to generate ssl cert)
 RUN \
     apk add --no-cache --virtual .system \
-        tzdata tini su-exec && \
+        tzdata tini && \
     apk add --no-cache --virtual .build \
         boost geoip py2-pip openssl intltool && \
     apk add --no-cache --virtual .libtorrent \
@@ -54,8 +53,6 @@ RUN \
         deluge-${DELUGE_VERSION}/ && \
     python setup.py -q build && \
     python setup.py -q install && \
-    /usr/bin/deluge-web \
-        -f --ssl -c ${D_DIR}/config -l ${D_DIR}/config/deluge-web-init.log -L debug && \
     apk del \
         .libtorrent .build && \
     rm -rf \

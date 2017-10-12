@@ -1,4 +1,4 @@
-# sinaptika/deluge
+# sinaptika/deluge-web
 Docker image for deluge web interface  
 From alpine:3.6  
 [Deluge: 1.3.15](http://deluge-torrent.org/)    
