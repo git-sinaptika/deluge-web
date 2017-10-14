@@ -69,4 +69,9 @@ All of the above is ofc just an opinion and ymmv.
 - added dev and stable
 
 **0.4**
-- Fixed ssl
+- Changed to multi-stage build and ssl force on deluge-web
+
+**0.5**
+- Dir strcuture changes on github and tag changes on docker hub
+- Some syntax changes
+- Added first run with debug for deluge-web
