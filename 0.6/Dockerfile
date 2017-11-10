@@ -47,7 +47,7 @@ RUN \
     apk add --no-cache --virtual .runtime \
         zlib py-setuptools py2-openssl py2-chardet py-twisted py-mako && \
     pip install --no-cache-dir \
-        automat pyxdg service_identity incremental constantly packaging && \
+        pyxdg service_identity incremental constantly packaging automat && \
     wget -qO- \
         http://download.deluge-torrent.org/source/deluge-${DELUGE_VERSION}.tar.gz | tar xz && \
     cd \
