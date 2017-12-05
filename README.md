@@ -2,7 +2,6 @@
 Docker image for deluge web interface  
 From alpine:3.6  
 [Deluge: 1.3.15](http://deluge-torrent.org/)    
-[libtorrent: 1.1.4](http://www.libtorrent.org/)    
 This image contains only Deluge Web interface.  
 Deluge daemon port: /  
 Deluged incoming port tcp&udp: /  
@@ -75,3 +74,10 @@ All of the above is ofc just an opinion and ymmv.
 - Dir strcuture changes on github and tag changes on docker hub
 - Some syntax changes
 - Added first run with debug for deluge-web
+
+**0.6**
+- Changed git source from git:deluge.org to github 
+- removed selfsigned certs from image
+
+**0.7**
+- Upgraded libtorrent and deluge base images to Alpine 3.7
