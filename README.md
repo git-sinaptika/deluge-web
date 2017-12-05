@@ -1,6 +1,6 @@
 # sinaptika/deluge-web
 Docker image for deluge web interface  
-From alpine:3.6  
+From alpine:3.7  
 [Deluge: 1.3.15](http://deluge-torrent.org/)    
 This image contains only Deluge Web interface.  
 Deluge daemon port: /  
