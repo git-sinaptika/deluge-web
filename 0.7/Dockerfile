@@ -76,6 +76,9 @@ RUN \
 EXPOSE \
     ${D_W_PORT}
 
+VOLUME \
+    ${D_DIR}/config
+
 USER \
     ${D_USER}
 ENTRYPOINT \
@@ -91,7 +94,7 @@ LABEL \
     c_software_name="Deluge-web interface" \
     c_software_url="http://deluge-torrent.org/" \
     image.version="0.7" \
-    date.version="5.12.2017" \
+    date.version="14.12.2017" \
     web_interface=true \
     web_interface_port=${D_W_PORT} \
     exposed_ports=${D_W_PORT} \

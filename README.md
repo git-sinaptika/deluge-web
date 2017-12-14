@@ -20,7 +20,6 @@ Deluge web interface port: 8112
 `docker run -d \`  
 `--name c_deluge-web \`  
 `-p 8112:8112 \`  
-`-v ~/deluge:/opt/deluge \`  
 `sinaptika/deluge-web`
 
 4. Default password for the web interface is "deluge". Change it on first logon.
@@ -81,3 +80,4 @@ All of the above is ofc just an opinion and ymmv.
 
 **0.7**
 - Upgraded libtorrent and deluge base images to Alpine 3.7
+- Added volume to Dockerfile
