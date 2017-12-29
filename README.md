@@ -81,3 +81,6 @@ All of the above is ofc just an opinion and ymmv.
 **0.7**
 - Upgraded libtorrent and deluge base images to Alpine 3.7
 - Added volume to Dockerfile
+
+**0.8**
+- Changed builder images (libtorrent)
